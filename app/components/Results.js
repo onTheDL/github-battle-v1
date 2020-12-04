@@ -52,6 +52,7 @@ export default class Results extends React.Component {
 
   componentDidMount() {
     const { playerOne, playerTwo } = this.props
+
     battle([ playerOne, playerTwo])
       .then(players => {
         this.setState({
@@ -80,30 +81,44 @@ export default class Results extends React.Component {
     }
 
     return (
-      <div className='grid space-around container-sm'>
+      <>
+        <div className='grid space-around container-sm'>
 
-        {/* WINNER CARD */}
-        <Card 
-          header={winner.score === loser.score ? 'Tie' : 'Winner'}
-          subheader={`Score: ${winner.score.toLocaleString()}`}
-          avatar={winner.profile.avatar_url}
-          href={winner.profile.html_url}
-          name={winner.profile.login}
-        >
-          <ProfileList profile={winner.profile} />
-        </Card>
+          {/* WINNER CARD */}
+          <Card 
+            header={winner.score === loser.score ? 'Tie' : 'Winner'}
+            subheader={`Score: ${winner.score.toLocaleString()}`}
+            avatar={winner.profile.avatar_url}
+            href={winner.profile.html_url}
+            name={winner.profile.login}
+          >
+            <ProfileList profile={winner.profile} />
+          </Card>
 
-        {/* LOSER CARD */}
-        <Card
-          header={winner.score === loser.score ? 'Tie' : 'Loser'}
-          subheader={`Score: ${loser.score.toLocaleString()}`}
-          avatar={loser.profile.avatar_url}
-          name={loser.profile.login}
-          href={loser.profile.html_url}
+          {/* LOSER CARD */}
+          <Card
+            header={winner.score === loser.score ? 'Tie' : 'Loser'}
+            subheader={`Score: ${loser.score.toLocaleString()}`}
+            avatar={loser.profile.avatar_url}
+            name={loser.profile.login}
+            href={loser.profile.html_url}
+          >
+            <ProfileList profile={loser.profile} />
+          </Card>
+        </div>
+        <button
+          className='btn dark-btn btn-space'
+          onClick={this.props.onReset}
         >
-          <ProfileList profile={loser.profile} />
-        </Card>
-      </div>
+          Reset
+        </button>
+      </>
     )
   }
 } 
+
+Results.propTypes = {
+  playerOne: PropTypes.string.isRequired,
+  playerTwo: PropTypes.string.isRequired,
+  onReset: PropTypes.func.isRequired,
+}
