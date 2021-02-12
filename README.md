@@ -5,11 +5,13 @@ A client-side React app that shows the top GitHub profiles ranked according the 
 See it [live](https://frosty-williams-207395.netlify.app/)
 
 # Install
-Download zip file or git clone in terminal: https://github.com/amarofashion/react-credit-cards.git
-
-- install all project dependencies with npm install
-- start the development server with npm start
+* Download zip file or clone in terminal: https://github.com/amarofashion/react-credit-cards.git
+* install all project dependencies with `npm install`
+* start the development server with `npm start`
 
 
 # Preview
 
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
